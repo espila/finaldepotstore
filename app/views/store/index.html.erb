@@ -1,0 +1,28 @@
+<h1>Store#index</h1>
+
+<h1>Store</h1>
+
+<table class="w3-table-all">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Image url</th>
+      <th>Price</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.title %></td>
+        <td><%= strip_tags(product.description) %></td>
+        <td><%= image_tag(product.image_url) %></td>
+        <td><%= number_to_currency(product.price) %>
+        <%= button_to 'Add to Cart', line_items_path(product_id: product) %></td>
+    
+      </tr>
+    <% end %>
+  </tbody>
+</table>
